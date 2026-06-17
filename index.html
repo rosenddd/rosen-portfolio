@@ -91,15 +91,33 @@
       box-shadow: 0 0 10px rgba(74, 222, 128, 0.5);
     }
 
-    .hero .bio {
-      font-size: 1.06rem;
-      color: var(--text);
-      max-width: 580px;
-      line-height: 1.65;
+    .hero-nav {
+      display: flex;
+      gap: 10px;
+      margin-top: 30px;
     }
 
-    .hero .bio span {
-      color: var(--text-muted);
+    .nav-btn {
+      flex: 1 1 0;
+      min-width: 0;
+      text-align: center;
+      padding: 11px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border-hover);
+      background: var(--bg-card);
+      color: var(--text);
+      font-size: 0.86rem;
+      font-weight: 600;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background 0.2s ease, border-color 0.2s ease,
+        transform 0.2s ease, color 0.2s ease;
+    }
+
+    .nav-btn:hover {
+      background: #161616;
+      border-color: #444;
+      transform: translateY(-2px);
     }
 
     /* ---------- Section label ---------- */
@@ -125,6 +143,7 @@
       border: 1px solid var(--border);
       border-radius: var(--radius);
       overflow: hidden;
+      scroll-margin-top: 28px;
       transition: transform 0.25s ease, border-color 0.25s ease,
         background 0.25s ease, box-shadow 0.25s ease;
     }
@@ -629,6 +648,7 @@
       body { padding: 0 18px; }
       .wrap { padding: 64px 0 48px; }
       .hero { margin-bottom: 60px; }
+      .hero-nav { flex-direction: column; }
       .card-body { padding: 24px 22px 26px; }
       .card-media, .brand-plate { height: 158px; }
       .brand-plate .bp-logo { font-size: 1.8rem; }
@@ -651,6 +671,11 @@
     <header class="hero">
       <h1>Росен Димитров</h1>
       <p class="subtitle">Portfolio</p>
+      <nav class="hero-nav">
+        <a class="nav-btn" href="#creator-launchpad">Creator Launchpad</a>
+        <a class="nav-btn" href="#parkguard">ParkGuard</a>
+        <a class="nav-btn" href="#solo">SOLO Creative Lab</a>
+      </nav>
     </header>
 
     <!-- ===== Projects ===== -->
@@ -658,7 +683,7 @@
     <section class="projects">
 
       <!-- 1. Creator Launchpad -->
-      <article class="card" data-href="https://creatorlaunchpad.lovable.app" style="--c:#ff6a2e; --c-soft:rgba(255,106,46,0.55); --c-glow:rgba(255,106,46,0.16);">
+      <article id="creator-launchpad" class="card" data-href="https://creatorlaunchpad.lovable.app" style="--c:#ff6a2e; --c-soft:rgba(255,106,46,0.55); --c-glow:rgba(255,106,46,0.16);">
         <div class="card-media">
           <img src="CreatorLuanchpad/ChatGPT%20Image%20Apr%2029,%202026%20at%2002_02_52%20PM.jpg"
                alt="Creator Launchpad — Build. Launch. Monetise." loading="lazy" />
@@ -696,7 +721,7 @@
       </article>
 
       <!-- 2. ParkGuard -->
-      <article class="card" data-href="https://ufhafc-nd.myshopify.com" style="--c:#f4a52e; --c-soft:rgba(244,165,46,0.55); --c-glow:rgba(244,165,46,0.16);">
+      <article id="parkguard" class="card" data-href="https://ufhafc-nd.myshopify.com" style="--c:#f4a52e; --c-soft:rgba(244,165,46,0.55); --c-glow:rgba(244,165,46,0.16);">
         <div class="card-media">
           <img src="ParkGuard/header%20image.jpg"
                alt="ParkGuard — бариера за паркомясто, RESERVED 24/7 PROTECTION" loading="lazy" />
@@ -735,7 +760,7 @@
       </article>
 
       <!-- 3. SOLO Creative Lab -->
-      <article class="card" data-href="https://solocreativelab.roskata-dd.workers.dev/" style="--c:#b23a5d; --c-soft:rgba(178,58,93,0.55); --c-glow:rgba(178,58,93,0.16);">
+      <article id="solo" class="card" data-href="https://solocreativelab.roskata-dd.workers.dev/" style="--c:#b23a5d; --c-soft:rgba(178,58,93,0.55); --c-glow:rgba(178,58,93,0.16);">
         <div class="card-media">
           <img src="SOLO/social-image.jpg"
                alt="SOLO Creative Lab — Quietly building brands." loading="lazy" />
