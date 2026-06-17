@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Росен Димитров — Предприемач и създател</title>
+  <meta name="description" content="Росен Димитров — предприемач и създател от София, България. Три продукта, изградени от нулата: ParkGuard, SOLO Creative Lab и Creator Launchpad." />
+
+  <!-- Inter via Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --bg-card: #101010;
+      --bg-card-hover: #141414;
+      --text: #e8e8e8;
+      --text-muted: #8a8a8a;
+      --text-faint: #5e5e5e;
+      --border: #1f1f1f;
+      --border-hover: #333333;
+      --accent: #6b6b6b;
+      --accent-line: #2a2a2a;
+      --pill-bg: #161616;
+      --pill-border: #262626;
+      --radius: 16px;
+      --maxw: 760px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      font-size: 16px;
+      letter-spacing: -0.01em;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      padding: 0 24px;
+    }
+
+    .wrap {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 96px 0 64px;
+    }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      margin-bottom: 88px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 7vw, 3.4rem);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      margin-bottom: 14px;
+    }
+
+    .hero .subtitle {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: 0.01em;
+      margin-bottom: 24px;
+    }
+
+    .hero .subtitle::before {
+      content: "";
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #4ade80;
+      margin-right: 9px;
+      vertical-align: middle;
+      box-shadow: 0 0 10px rgba(74, 222, 128, 0.5);
+    }
+
+    .hero .bio {
+      font-size: 1.06rem;
+      color: var(--text);
+      max-width: 580px;
+      line-height: 1.65;
+    }
+
+    .hero .bio span {
+      color: var(--text-muted);
+    }
+
+    /* ---------- Section label ---------- */
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-faint);
+      margin-bottom: 28px;
+    }
+
+    /* ---------- Projects ---------- */
+    .projects {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .card {
+      position: relative;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: transform 0.25s ease, border-color 0.25s ease,
+        background 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .card[data-href] {
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--c-soft, var(--border-hover));
+      background: var(--bg-card-hover);
+      box-shadow: 0 16px 48px -16px rgba(0, 0, 0, 0.7),
+        0 0 34px -18px var(--c-glow, transparent);
+    }
+
+    /* ----- Card media (project photo) ----- */
+    .card-media {
+      position: relative;
+      height: 196px;
+      overflow: hidden;
+      background: #0d0d0d;
+    }
+
+    .card-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .card:hover .card-media img {
+      transform: scale(1.05);
+    }
+
+    .card-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom,
+        rgba(10, 10, 10, 0) 45%, rgba(16, 16, 16, 0.9) 100%);
+      pointer-events: none;
+    }
+
+    /* Branded top edge in each project's accent colour */
+    .card-media::before,
+    .brand-plate::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--c, var(--border-hover));
+      z-index: 2;
+    }
+
+    /* ----- Brand plate (fallback when there's no photo) ----- */
+    .brand-plate {
+      position: relative;
+      height: 196px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      overflow: hidden;
+      background: radial-gradient(130% 150% at 50% 0%, #1d1d1d 0%, #0c0c0c 72%);
+    }
+
+    .brand-plate .bp-logo {
+      font-size: 2.1rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      color: #fff;
+    }
+
+    .brand-plate .bp-sub {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.42em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      padding-left: 0.42em;
+    }
+
+    .card-body {
+      padding: 30px 32px 32px;
+    }
+
+    .card-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .card h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: -0.025em;
+      line-height: 1.2;
+    }
+
+    .tagline {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      font-weight: 400;
+      margin-top: 6px;
+      margin-bottom: 18px;
+    }
+
+    .desc {
+      color: var(--text);
+      font-size: 0.97rem;
+      line-height: 1.68;
+      margin-bottom: 20px;
+    }
+
+    /* ---------- "What makes it different" ---------- */
+    .different {
+      border-left: 2px solid var(--c-soft, var(--accent-line));
+      padding: 2px 0 2px 18px;
+      margin-bottom: 24px;
+    }
+
+    .different .diff-label {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--c, var(--text-faint));
+      margin-bottom: 7px;
+    }
+
+    .different p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      line-height: 1.62;
+    }
+
+    /* ---------- Feature list ---------- */
+    .features {
+      margin-bottom: 24px;
+    }
+
+    .features .feat-label {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--c, var(--text-faint));
+      margin-bottom: 13px;
+    }
+
+    .feature-list {
+      list-style: none;
+      display: grid;
+      gap: 11px;
+    }
+
+    .feature-list li {
+      position: relative;
+      padding-left: 22px;
+      font-size: 0.92rem;
+      line-height: 1.55;
+      color: var(--text-muted);
+    }
+
+    .feature-list li::before {
+      content: "";
+      position: absolute;
+      left: 2px;
+      top: 0.6em;
+      width: 6px;
+      height: 6px;
+      border-radius: 2px;
+      background: var(--c, var(--accent-line));
+    }
+
+    .feature-list li strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* A single differentiator bullet, visually set apart from the rest */
+    .feature-list li.diff-bullet {
+      margin-top: 5px;
+      padding: 12px 16px 12px 38px;
+      background: var(--c-glow, rgba(255, 255, 255, 0.04));
+      border: 1px solid var(--c-soft, var(--pill-border));
+      border-radius: 11px;
+      color: var(--text);
+    }
+
+    .feature-list li.diff-bullet::before {
+      content: "✦";
+      left: 15px;
+      top: 12px;
+      width: auto;
+      height: auto;
+      background: none;
+      border-radius: 0;
+      color: var(--c, var(--text));
+      font-size: 0.95em;
+      line-height: 1.55;
+    }
+
+    /* ---------- Stack pills ---------- */
+    .stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 26px;
+    }
+
+    .pill {
+      font-size: 0.76rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      background: var(--pill-bg);
+      border: 1px solid var(--pill-border);
+      padding: 5px 11px;
+      border-radius: 999px;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+      transition: border-color 0.25s ease, color 0.25s ease;
+    }
+
+    .card:hover .pill {
+      border-color: var(--c-soft, var(--pill-border));
+      color: var(--text);
+    }
+
+    /* ---------- CTA ---------- */
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+      border: 1px solid var(--border-hover);
+      border-radius: 999px;
+      padding: 9px 18px;
+      transition: background 0.2s ease, border-color 0.2s ease, gap 0.2s ease;
+    }
+
+    .cta:hover {
+      background: var(--c-glow, #1a1a1a);
+      border-color: var(--c, #444);
+      color: #fff;
+      gap: 11px;
+    }
+
+    .cta .arrow {
+      font-size: 0.9em;
+      transition: transform 0.2s ease;
+    }
+
+    .cta:hover .arrow {
+      transform: translate(2px, -2px);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: transparent;
+      border: 1px dashed var(--pill-border);
+      border-radius: 999px;
+      padding: 8px 16px;
+      letter-spacing: 0.02em;
+    }
+
+    .badge::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #d4a24e;
+      box-shadow: 0 0 8px rgba(212, 162, 78, 0.5);
+    }
+
+    /* ---------- Card actions + gallery button ---------- */
+    .card-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .gallery-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--c, var(--text));
+      background: var(--c-glow, #1a1a1a);
+      border: 1px solid var(--c-soft, var(--border-hover));
+      border-radius: 999px;
+      padding: 9px 16px 9px 18px;
+      cursor: pointer;
+      transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .gallery-btn:hover {
+      border-color: var(--c, #555);
+      transform: translateY(-1px);
+    }
+
+    .gallery-btn .g-ico {
+      font-size: 0.95em;
+      line-height: 1;
+    }
+
+    .gallery-btn .g-count {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text);
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 999px;
+      padding: 2px 8px;
+    }
+
+    /* ---------- Lightbox gallery ---------- */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      display: none;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 40px 20px;
+      background: rgba(5, 5, 5, 0.86);
+      -webkit-backdrop-filter: blur(6px);
+      backdrop-filter: blur(6px);
+      overflow-y: auto;
+      overscroll-behavior: contain;
+    }
+
+    .lightbox.open {
+      display: flex;
+    }
+
+    .lb-panel {
+      width: 100%;
+      max-width: 1040px;
+      background: #0d0d0d;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.8);
+    }
+
+    .lb-head {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 22px;
+      background: #0d0d0d;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .lb-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .lb-title span {
+      color: var(--text-faint);
+      font-weight: 400;
+    }
+
+    .lb-x {
+      flex: none;
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      border: 1px solid var(--border-hover);
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .lb-x:hover {
+      background: #1a1a1a;
+      color: #fff;
+      border-color: #555;
+    }
+
+    .lb-grid {
+      padding: 16px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .lb-item {
+      position: relative;
+      margin: 0;
+      aspect-ratio: 1 / 1;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #141414;
+      cursor: zoom-in;
+    }
+
+    .lb-item.wide {
+      grid-column: span 2;
+      aspect-ratio: 16 / 9;
+    }
+
+    .lb-item.video {
+      cursor: default;
+    }
+
+    .lb-item img,
+    .lb-item video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .lb-item:not(.video):hover img {
+      transform: scale(1.06);
+    }
+
+    .lb-zoom {
+      position: fixed;
+      inset: 0;
+      z-index: 210;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+      background: rgba(0, 0, 0, 0.92);
+      cursor: zoom-out;
+    }
+
+    .lb-zoom.show {
+      display: flex;
+    }
+
+    .lb-zoom img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 20px 60px -20px rgba(0, 0, 0, 0.9);
+    }
+
+    /* ---------- Footer ---------- */
+    footer {
+      margin-top: 72px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+      font-size: 0.86rem;
+      color: var(--text-faint);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    footer a:hover {
+      color: var(--text);
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 600px) {
+      body { padding: 0 18px; }
+      .wrap { padding: 64px 0 48px; }
+      .hero { margin-bottom: 60px; }
+      .card-body { padding: 24px 22px 26px; }
+      .card-media, .brand-plate { height: 158px; }
+      .brand-plate .bp-logo { font-size: 1.8rem; }
+      .card-head { flex-direction: column; gap: 4px; }
+      .lightbox { padding: 16px 10px; }
+      .lb-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+      .lb-item.wide { grid-column: span 2; }
+      footer { flex-direction: column; align-items: flex-start; }
+    }
+
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <!-- ===== Hero ===== -->
+    <header class="hero">
+      <h1>Росен Димитров</h1>
+      <p class="subtitle">Portfolio</p>
+    </header>
+
+    <!-- ===== Projects ===== -->
+    <p class="section-label">Избрани проекти</p>
+    <section class="projects">
+
+      <!-- 1. Creator Launchpad -->
+      <article class="card" data-href="https://creatorlaunchpad.lovable.app" style="--c:#ff6a2e; --c-soft:rgba(255,106,46,0.55); --c-glow:rgba(255,106,46,0.16);">
+        <div class="card-media">
+          <img src="CreatorLuanchpad/ChatGPT%20Image%20Apr%2029,%202026%20at%2002_02_52%20PM.jpg"
+               alt="Creator Launchpad — Build. Launch. Monetise." loading="lazy" />
+        </div>
+        <div class="card-body">
+          <div class="card-head">
+            <h3>Creator Launchpad</h3>
+          </div>
+          <p class="tagline">AI платформа, с която микро криейтъри сами създават дигитален продукт</p>
+          <p class="desc">
+            Платформа за микро криейтъри, която им позволява сами, чрез изкуствен интелект, да
+            изработят дигитален продукт, който да продават на аудиторията си.
+          </p>
+          <div class="features">
+            <span class="feat-label">Платформата има функциите</span>
+            <ul class="feature-list">
+              <li>Автоматично намира профила на инфлуенсъра по зададен таг.</li>
+              <li>Scrape-ва Instagram, за да извлече броя последователи и ангажираността на профила.</li>
+              <li>Изчислява engagement rate и потенциалните печалби от launch на продукта.</li>
+              <li>Изготвя пълен план за излизане на пазара, следвайки prompt, който съм написал.</li>
+              <li>Дава идеи за продукта.</li>
+              <li>Накрая създава къстъм landing page за продукта — уникална за всеки инфлуенсър.</li>
+              <li class="diff-bullet">Цялата платформа е разработена изцяло в Lovable, а social изображенията за нея създадох с ChatGPT Image 2.0.</li>
+            </ul>
+          </div>
+          <div class="stack">
+            <span class="pill">Lovable</span>
+            <span class="pill">Изкуствен интелект</span>
+            <span class="pill">ChatGPT Image 2.0</span>
+          </div>
+          <a class="cta" href="https://creatorlaunchpad.lovable.app" target="_blank" rel="noopener noreferrer">
+            Виж Creator Launchpad <span class="arrow">↗</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- 2. ParkGuard -->
+      <article class="card" data-href="https://ufhafc-nd.myshopify.com" style="--c:#f4a52e; --c-soft:rgba(244,165,46,0.55); --c-glow:rgba(244,165,46,0.16);">
+        <div class="card-media">
+          <img src="ParkGuard/header%20image.jpg"
+               alt="ParkGuard — бариера за паркомясто, RESERVED 24/7 PROTECTION" loading="lazy" />
+        </div>
+        <div class="card-body">
+          <div class="card-head">
+            <h3>ParkGuard</h3>
+          </div>
+          <p class="tagline">Онлайн магазин за един продукт — бариера за паркомясто с дистанционно</p>
+          <p class="desc">
+            Направих пълен Shopify сайт, който продава един продукт — бариера за паркомясто с
+            дистанционно управление. Снимките на продукта, снимките на доволни клиенти и видеата на
+            продукта са генерирани с Higgsfield. Добавих и чатбот, който отговаря на въпросите на
+            клиентите в реално време.
+          </p>
+          <div class="features">
+            <ul class="feature-list">
+              <li class="diff-bullet">Сайтът не е направен в редактора на Shopify — свързах Claude Code директно с Shopify и изградих напълно собствен дизайн, вместо да използвам готов шаблон.</li>
+            </ul>
+          </div>
+          <div class="stack">
+            <span class="pill">Shopify</span>
+            <span class="pill">Claude Code</span>
+            <span class="pill">Higgsfield</span>
+            <span class="pill">Чатбот</span>
+          </div>
+          <div class="card-actions">
+            <a class="cta" href="https://ufhafc-nd.myshopify.com" target="_blank" rel="noopener noreferrer">
+              ParkGuard <span class="arrow">↗</span>
+            </a>
+            <button type="button" class="gallery-btn" data-open-gallery aria-haspopup="dialog" aria-controls="pg-gallery">
+              <span class="g-ico" aria-hidden="true">▦</span> AI галерия <span class="g-count">16</span>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 3. SOLO Creative Lab -->
+      <article class="card" data-href="https://solocreativelab.roskata-dd.workers.dev/" style="--c:#b23a5d; --c-soft:rgba(178,58,93,0.55); --c-glow:rgba(178,58,93,0.16);">
+        <div class="card-media">
+          <img src="SOLO/social-image.jpg"
+               alt="SOLO Creative Lab — Quietly building brands." loading="lazy" />
+        </div>
+        <div class="card-body">
+          <div class="card-head">
+            <h3>SOLO Creative Lab</h3>
+          </div>
+          <p class="tagline">Уебсайт на бутикова маркетинг агенция</p>
+          <p class="desc">
+            Сайт на маркетинговата агенция на сестра ми. Изградих целия сайт с Claude Code — с custom
+            анимации и hover ефекти. В момента работим над изграждането на нова визия на сайта.
+          </p>
+          <div class="features">
+            <ul class="feature-list">
+              <li class="diff-bullet">Това беше първият ми истински проект с Claude Code. Не е крайният вариант на сайта, но именно с него се запознах с инструмента и положих основата за всичко след това.</li>
+            </ul>
+          </div>
+          <div class="stack">
+            <span class="pill">Claude Code</span>
+            <span class="pill">React</span>
+            <span class="pill">Cloudflare Pages</span>
+            <span class="pill">Анимации &amp; hover ефекти</span>
+          </div>
+          <a class="cta" href="https://solocreativelab.roskata-dd.workers.dev/" target="_blank" rel="noopener noreferrer">
+            Виж SOLO Creative Lab <span class="arrow">↗</span>
+          </a>
+        </div>
+      </article>
+
+    </section>
+  </main>
+
+  <!-- ===== ParkGuard AI gallery (lightbox) ===== -->
+  <div class="lightbox" id="pg-gallery" role="dialog" aria-modal="true" aria-label="ParkGuard — AI-генерирани материали">
+    <div class="lb-panel">
+      <div class="lb-head">
+        <div class="lb-title">ParkGuard <span>· AI-генерирани материали</span></div>
+        <button type="button" class="lb-x" data-close-gallery aria-label="Затвори">✕</button>
+      </div>
+      <div class="lb-grid">
+        <figure class="lb-item wide"><img src="ParkGuard/header%20image%202.jpg" alt="AI рекламен банер — RESERVED 24/7 PROTECTION" loading="lazy" /></figure>
+        <figure class="lb-item"><img src="ParkGuard/slideshow/hf_20260608_203941_15ca113e-878a-4ab8-9284-6c1104ce09b1.jpg" alt="AI lifestyle кадър — Bentley на резервирано място" loading="lazy" /></figure>
+        <figure class="lb-item"><img src="ParkGuard/slideshow/hf_20260608_203320_f1e5a695-3c3f-4b21-a4c6-d82f30a77d71.jpg" alt="AI lifestyle кадър — Porsche 911 GT3 RS" loading="lazy" /></figure>
+        <figure class="lb-item"><img src="ParkGuard/slideshow/hf_20260608_202944_f393f7e0-dbc3-4ceb-b6ff-6d29879cd847.jpg" alt="AI lifestyle кадър — Mercedes S-Class" loading="lazy" /></figure>
+        <figure class="lb-item"><img src="ParkGuard/slideshow/hf_20260608_210105_837a07b9-772d-4608-982a-c22c884474ef.jpg" alt="AI lifestyle кадър — шофьорка с дистанционно" loading="lazy" /></figure>
+        <figure class="lb-item"><img src="ParkGuard/slideshow/hf_20260608_204153_e78c9268-2403-4d1f-a1eb-f527e9744c57.jpg" alt="AI кадър — едно резервирано място в пълен паркинг" loading="lazy" /></figure>
+        <figure class="lb-item"><img src="ParkGuard/product%20photos/ChatGPT%20Image%20May%2031,%202026%20at%2006_32_28%20PM.jpg" alt="AI кадър — дистанционно управление от автомобила" loading="lazy" /></figure>
+        <figure class="lb-item"><img src="ParkGuard/customers/image%203.jpg" alt="AI снимка на доволен клиент" loading="lazy" /></figure>
+        <figure class="lb-item"><img src="ParkGuard/customers/image%201.jpg" alt="AI снимка на доволен клиент" loading="lazy" /></figure>
+        <figure class="lb-item"><img src="ParkGuard/customers/image%202.jpg" alt="AI снимка на доволен клиент" loading="lazy" /></figure>
+        <figure class="lb-item"><img src="ParkGuard/product%20photos/2.jpg" alt="AI продуктова снимка — бариерата пред BMW" loading="lazy" /></figure>
+        <figure class="lb-item"><img src="ParkGuard/product%20photos/4.jpg" alt="AI продуктова снимка — бариерата пред кафене" loading="lazy" /></figure>
+        <figure class="lb-item"><img src="ParkGuard/product%20photos/1.jpg" alt="AI продуктова снимка на бариерата" loading="lazy" /></figure>
+        <figure class="lb-item"><img src="ParkGuard/product%20photos/3.jpg" alt="AI продуктова снимка на улица" loading="lazy" /></figure>
+        <figure class="lb-item"><img src="ParkGuard/header%20image.jpg" alt="AI рекламен банер — RESERVED (нощна сцена)" loading="lazy" /></figure>
+        <figure class="lb-item wide video"><video controls preload="metadata" playsinline><source src="ParkGuard/videos/360%20video.mp4" type="video/mp4" /></video></figure>
+      </div>
+    </div>
+    <div class="lb-zoom"><img src="" alt="" /></div>
+  </div>
+
+  <script>
+    (function () {
+      var openBtn = document.querySelector('[data-open-gallery]');
+      var lb = document.getElementById('pg-gallery');
+      if (!openBtn || !lb) return;
+
+      var closeBtn = lb.querySelector('[data-close-gallery]');
+      var zoom = lb.querySelector('.lb-zoom');
+      var zoomImg = zoom.querySelector('img');
+
+      function open() {
+        lb.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+      function close() {
+        lb.classList.remove('open');
+        zoom.classList.remove('show');
+        document.body.style.overflow = '';
+      }
+
+      openBtn.addEventListener('click', open);
+      closeBtn.addEventListener('click', close);
+      // Click on the dimmed backdrop (not the panel) closes the gallery.
+      lb.addEventListener('click', function (e) {
+        if (e.target === lb) close();
+      });
+
+      // Click any image to view it full-size.
+      lb.querySelectorAll('.lb-grid img').forEach(function (img) {
+        img.addEventListener('click', function () {
+          zoomImg.src = img.src;
+          zoomImg.alt = img.alt;
+          zoom.classList.add('show');
+        });
+      });
+      zoom.addEventListener('click', function () {
+        zoom.classList.remove('show');
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key !== 'Escape') return;
+        if (zoom.classList.contains('show')) zoom.classList.remove('show');
+        else if (lb.classList.contains('open')) close();
+      });
+    })();
+  </script>
+
+  <script>
+    // Make the whole project card a click target for its link.
+    (function () {
+      document.querySelectorAll('.card[data-href]').forEach(function (card) {
+        card.addEventListener('click', function (e) {
+          // Let real links and buttons (store link, AI gallery) behave normally.
+          if (e.target.closest('a, button')) return;
+          // Don't hijack a click that was finishing a text selection.
+          if (window.getSelection && String(window.getSelection())) return;
+          window.open(card.getAttribute('data-href'), '_blank', 'noopener');
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
